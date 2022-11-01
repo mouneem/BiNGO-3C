@@ -62,12 +62,14 @@
     <!--  -->
     <!--  -->
     <!--  -->
-<hr>
+    <hr>
     <div class="container ">
       <form>
         <fieldset>
-          <legend> Pairwise Comparison</legend>
-          <p>Please entre the two sequences to be copmared than click on submit</p>
+          <div class="text-center w-100">
+            <h3> Pairwise Comparison</h3>
+          </div>
+          <p>Please entre the two sequences to be copmared then click on submit</p>
           
           <div class="row">
             <div class="col-6">
@@ -98,22 +100,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="row">
-            <div class="col-4">
-              <div class="form-group">
-                <label for="exampleTextarea" class="form-label mt-4"></label>
-                <label for="exampleTextarea" class="form-label mt-4">Delimiter: </label>
-                <div class="form-check form-switch">
-                  <input class="form-check-input" onclick="hideDelim()" type="checkbox" id="flexSwitchCheckChecked" checked="">
-                  <label class="form-check-label" for="flexSwitchCheckChecked">Use a random delimiter </label>
-                </div>
-              </div>
-              <div class="form-group" id="delimiter_block">
-                <label for="exampleTextarea" class="form-label mt-4">Delimiter size: </label>
-                <input type="number" class="form-control" value="1" id="inputDefault">
-              </div>
-            </div>
-          </div> -->
 
           <div class="p-3">
             <button type="submit" id="submit" class="btn btn-primary">Compare two sequences</button>
@@ -121,7 +107,6 @@
         </fieldset>
       </form>
     </div>
-
 
     <div class=" bg-white" style="display: none;" id="results">
       <div class="container ">
@@ -169,6 +154,63 @@
       </div>
     </div> 
 
+
+<!--  -->
+<!-- Separator div -->
+<!--  -->
+    <div class=" bg-primary">
+      <div class="container">
+        <div class="col-12 text-center text-white p-3">
+          <br>
+          <br>
+        </div>
+      </div>
+    </div> 
+<!--  -->
+<!-- Multiple -->
+<!--  -->
+    <hr>
+    <div class="container ">
+      <form>
+        <fieldset>
+          <div class="text-center w-100">
+            <h3> Multiple Sequecne Comparison</h3>
+          </div>
+          <p>Please entre the +2 sequences in different lines then click on submit</p>
+          <div class="row">
+            <div class="col-12 ">
+              <div class="form-group">
+                <label for="exampleTextarea" class="form-label">Sequences (in different lines </label>
+                <textarea id="sequences" class="form-control" id="exampleTextarea" rows="4" placeholder="Sequence1... 
+Sequence2...
+Sequence3...
+...
+" ></textarea>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleTextarea" class="form-label mt-4">Words size: (>3) </label>
+                <input type="number" class="form-control" id="s_multi"  value="3" id="inputDefault">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="exampleTextarea"  class="form-label mt-4">gap size: (>0) </label>
+                <input type="number" class="form-control" id="h_multi" value="1" id="inputDefault">
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3">
+            <button type="submit" id="submit_multi" class="btn btn-primary">Compare all sequences</button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
     <!--  -->
     <!--  -->
     <!--  -->
@@ -176,16 +218,6 @@
     <div class=" bg-primary">
       <div class="container">
         <div class="col-12 text-center text-white p-3">
-          Hi
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
           <br>
           <br>
         </div>
@@ -213,103 +245,10 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function() {
-      var sequence1 = $('#sequence1');
-      var sequence2 = $('#sequence2');
-      var s_val = $('#s_val');
-      var h_val = $('#h_val');
-      var submit = $('#submit');
-
-      submit.click(function() {
-        // load data
-        var sequence1 = $('#sequence1');
-        var sequence2 = $('#sequence2');
-        var s_val = $('#s_val');
-        var h_val = $('#h_val');
-        var submit = $('#submit');
-
-        // convert
-        var s  =parseInt(s_val.val());
-        var h  =parseInt(h_val.val());
-        
-        // processing
-        var seq1 = sequence1.val()
-        var words1 = splitSeq(seq1, s, h);
-        var bins1 = binarize(words1);
-        
-        var seq2 = sequence2.val()
-        var words2 = splitSeq(seq2, s, h);
-        var bins2 = binarize(words2);
-
-        console.log(seq1.length * 8  )
-        console.log(bins1.length * 8  )
-
-
-        var s1_len = document.getElementById("s1_len");
-        s1_len.innerHTML = seq1.length ;
-        var s1_nw = document.getElementById("s1_nw");
-        s1_nw.innerHTML = words1.length ;
-        var s1_sb = document.getElementById("s1_sb");
-        s1_sb.innerHTML = seq1.length*8 ;
-        var s1_sa = document.getElementById("s1_sa");
-        s1_sa.innerHTML = bins2.length * 8 ;
-
-
-        var s2_len = document.getElementById("s2_len");
-        s2_len.innerHTML = seq1.length ;
-        var s2_len = document.getElementById("s2_nw");
-        s2_nw.innerHTML = words2.length ;
-        var s2_sb = document.getElementById("s2_sb");
-        s2_sb.innerHTML = seq2.length * 8 ;
-        var s2_sa = document.getElementById("s2_sa");
-        s2_sa.innerHTML = bins2.length * 8 ;
-
-
-        var cm = intersect(bins1,bins2);
-        var cm_wd = document.getElementById("cm_wd");
-        cm_wd.innerHTML = cm.length ;
-        var U = [...new Set([...bins2, ...bins1])] 
-        var sm_sc = document.getElementById("sm_sc");
-        sm_sc.innerHTML = (cm.length/U.length).toFixed(5)*100 ;
-        // console.log(bins1);
-
-
-        var x = document.getElementById("results");
-          x.style.display = "block";
-      });
-  });
-
-  
-  function splitSeq(seq, s, h) {
-    var words = [];
-    for (let index = 0; index < seq.length - s; index = index+h) {
-      let word = seq.substring(index, index+s);
-      words.push(word);
-    }
-    return words;
-  }
-
-  function binarize(words) {
-    let bins = [];
-    for (let index = 0; index < words.length; index++) {
-      let word = words[index];
-      word = word.replaceAll('A','00').replaceAll('C','01').replaceAll('G','10').replaceAll('T','11');
-      bins.push(word);
-    }
-    return bins;
-    
-  }
-
-  function intersect(l1, l2){
-    const filteredArray = l1.filter(value => l2.includes(value));
-    return filteredArray;
-  }
-
 </script>
 
-
   <script src="./assets/bootstrap.bundle.min.js"></script>
-  <script src="./assets/prism.js" data-manual=""></script>
   <script src="./assets/custom.js"></script>
+  <script src="./assets/processing.js"></script>
 </body>
 </html>
