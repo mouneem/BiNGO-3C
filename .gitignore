@@ -1,1 +1,4 @@
 *.contigs.fa
+*/ErnestoBorrayo.fasta
+*/contigs/*
+*/__pycache__/*
