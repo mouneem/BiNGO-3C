@@ -263,6 +263,7 @@ def list_of_subSequences_to_kmers(list_of_subSeqs, k = 11, step = 1):
 def dictKmer_from_DictSubseq(dictSubSeq, k = 11, step = 1): 
     dictKmer = {}
     for key, subsequences in dictSubSeq.items():
+        print('processing: ', key)
         dictKmer[key] = set()
         kmers= []
         for subSeq in subsequences[2:]:
