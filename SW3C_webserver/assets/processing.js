@@ -99,7 +99,13 @@ function multiple(){
 	console.log(scores);
 	console.log('all_words.length');
 	console.log(sequencesArray.length);
-	makeTriMatrix(scores, sequencesArray.length);
+	var mutli_output = makeTriMatrix(scores, sequencesArray.length);
+
+	var sm_sc = document.getElementById("content_multi");
+	sm_sc.innerHTML = mutli_output ;
+	
+	var x = document.getElementById("results_multi");
+	  x.style.display = "block";
 
 }
 
@@ -134,19 +140,16 @@ function scores_multi(wordList){
 
 function makeTriMatrix(scoresList, Nelement){
 	var index= 0;
+	var lines = '';
 	for(m=0; m < Nelement; m++){
-		var line = '';
 		for(n=0; n<m; n++){
-			if(n == m)
-				continue;
-			else
-				line += scoresList[index];
-				line += ' - ';
-				index+=1
+			var line = '';
+			line += 'Sequence #' + String(m+1) + ' / ' + 'Sequence #' + String(n+1) + ' : ' + String( scoresList.shift().toFixed(4)) 
+			console.log(line)
+			lines += line + '<br>';
 		}
-		console.log(line)
 	}
-	return;
+	return lines;
 }
 
 
