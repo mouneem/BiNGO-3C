@@ -72,7 +72,10 @@ function pair() {
 
 
 	var x = document.getElementById("results");
-	  x.style.display = "block";
+	x.style.display = "block";
+
+	var results_multi = document.getElementById("results_multi");
+	results_multi.style.display = "none";
 }
 
 
@@ -105,7 +108,11 @@ function multiple(){
 	sm_sc.innerHTML = mutli_output ;
 	
 	var x = document.getElementById("results_multi");
-	  x.style.display = "block";
+	x.style.display = "block";
+
+
+	var results1 = document.getElementById("results");
+	results1.style.display = "none";
 
 }
 
