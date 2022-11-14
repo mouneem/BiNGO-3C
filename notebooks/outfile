@@ -1,1 +1,24 @@
-./data/Benchmarking/dataset/S1.fasta	./data/Benchmarking/dataset/S2.fasta	1	1	0/160
+
+
+
+ CLUSTAL 2.1 Multiple Sequence Alignments
+
+
+Sequence format is Pearson
+Sequence 1: s1         10000 bp
+Sequence 2: s2         10000 bp
+Start of Pairwise alignments
+Aligning...
+
+Sequences (1:2) Aligned. Score:  0
+Guide tree file created:   [./data/Benchmarking/dataset/sequences.dnd]
+
+There are 1 groups
+Start of Multiple Alignment
+
+Aligning...
+Group 1:                     Delayed
+Alignment Score 20451
+
+CLUSTAL-Alignment file created  [./data/Benchmarking/dataset/sequences.aln]
+
