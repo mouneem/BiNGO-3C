@@ -113,6 +113,31 @@ def dictSubSeq_from_Fasta_file(filename): #read fasta file of subsequences and s
 
 
 
+from os import listdir
+from os.path import isfile, join
+
+def dictSubSeq_from_repo(repo): #read all files in a repo and split them into subseqs
+    SubSeqDict = {}
+    c = 0
+    files = [repo + '/' + f for f in listdir(repo) if isfile(join(repo, f))]
+    for filename in files:
+        c+=1
+        lines = open(filename,'r').readlines()
+        id = '.'.join(lines[0][1:].split('.')[:2]) #name of this file
+        SubSeqDict[id] = ''
+        Sequences = [] # new set of sequences
+        Seq = ''
+        for line in lines:
+            line = line.replace('\n','')
+            if '>' in line:
+                Sequences.append(Seq)
+                Seq = ''
+            else:
+                Seq += line # merge multiple lines into one
+        SubSeqDict[id]=Sequences 
+    return SubSeqDict
+
+    
 
 from os import listdir
 from os.path import isfile, join
