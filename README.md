@@ -8,7 +8,7 @@ To reduce the memory and time consumption in our approach, we start by splitting
 
  
 ## Material and Methods 
-### Sliding window 
+### Sliding window  
 Our method is based on the comparison of sets of elements instead of entire sequences, similar to any other wordcomparison based methods. First, for every sequence S, the set of words is established by using Ws,g, such that W is a slidingwindow of size s and using a gap (g) to split DNA sequences into small sub-sequences (words) of size s, such that s ≥ 3 and g ≥ 1. K-mers, for instance, are a special case where s = k and g = 1. Higher g or s values can be used to decrease the number of words generated, however, this may lead to random skips of words and impact comparison accuracy, particularly when dealing with long or highly similar sequences. 
 To address this, we adjust the sliding-window pointer on different positions of the compared sequences using randomly selected sub-sequences as delimiters. This allows resetting the pointer at similar positions in both sequences thus mitigating noise, frame-shift errors, and INDELs. 
 ### Binary encoding 
