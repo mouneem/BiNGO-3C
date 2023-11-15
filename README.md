@@ -1,3 +1,9 @@
+---
+noteId: "3b00a76083b211eea2ca0d161e4daf0a"
+tags: []
+
+---
+
 # BiNGO-3C: Binary Encoding of Genomic Sequences for Optimal Compression, Comparison and Clustering
 
 ## Abstract
@@ -70,8 +76,6 @@ The following four datasets were used to validate the accuracy of our method. al
 | AY391777.1 | Human coronavirus OC43|
 | MK167038.1 | Human coronavirus HKU1 strain SC2521|
 | FJ647223.1 | Murine coronavirus MHV-1|
-
-
 
 • A strain-level dataset of 25 SARS-CoV-2 genomes from Essabbar, et al. (2021) 
 
